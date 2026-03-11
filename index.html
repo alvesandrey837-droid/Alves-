@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Love Across The Universe</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI, sans-serif;
+overflow:hidden;
+background:black;
+color:white;
+}
+
+/* GALÁXIA */
+
+.galaxy{
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle at 30% 40%, #1b2735, #090a0f);
+z-index:-3;
+}
+
+/* ESTRELAS */
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+opacity:.8;
+animation:starsMove linear infinite;
+}
+
+@keyframes starsMove{
+from{transform:translateY(-10vh);}
+to{transform:translateY(110vh);}
+}
+
+/* ESTRELA CADENTE */
+
+.shooting-star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+box-shadow:0 0 10px white;
+animation:shoot 8s linear infinite;
+}
+
+@keyframes shoot{
+0%{
+transform:translate(-10vw,-10vh);
+opacity:0;
+}
+10%{
+opacity:1;
+}
+100%{
+transform:translate(120vw,120vh);
+opacity:0;
+}
+}
+
+/* LIVRO */
+
+.book{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:420px;
+height:260px;
+perspective:2000px;
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+border-radius:10px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px;
+transition:transform 1s;
+transform-origin:left;
+}
+
+.page.flipped{
+transform:rotateY(-180deg);
+}
+
+/* BOTÕES */
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:8px;
+margin-top:15px;
+cursor:pointer;
+font-size:16px;
+}
+
+.next{
+background:#ff4f7b;
+color:white;
+}
+
+.sim{
+background:white;
+color:#ff4f7b;
+}
+
+.nao{
+background:#333;
+color:white;
+}
+
+/* URSO */
+
+.bear{
+position:fixed;
+bottom:10px;
+left:-120px;
+font-size:50px;
+animation:walk 18s linear infinite;
+}
+
+@keyframes walk{
+0%{left:-120px;}
+100%{left:110vw;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="galaxy"></div>
+
+<div class="shooting-star"></div>
+
+<div class="bear">🧸</div>
+
+<div class="book">
+
+<div class="page" id="page1">
+
+<h2>Love Across The Universe 💫</h2>
+
+<p>
+Entre bilhões de estrelas,
+eu escolheria você em qualquer universo.
+</p>
+
+<button class="next" onclick="nextPage()">Abrir</button>
+
+</div>
+
+<div class="page" id="page2">
+
+<h2>Uma pergunta ❤️</h2>
+
+<p>Você quer continuar sendo minha namorada?</p>
+
+<button class="sim" onclick="responder('SIM ❤️')">Sim</button>
+
+<button class="nao" onclick="responder('NÃO 😅')">Não</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* CRIAR ESTRELAS */
+
+for(let i=0;i<150;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"vw";
+
+star.style.top=Math.random()*100+"vh";
+
+star.style.animationDuration=(5+Math.random()*10)+"s";
+
+document.body.appendChild(star);
+
+}
+
+/* VIRAR PÁGINA */
+
+function nextPage(){
+
+document.getElementById("page1").classList.add("flipped");
+
+}
+
+/* WHATSAPP */
+
+function responder(resp){
+
+let numero="SEU_NUMERO";
+
+let msg="Oi amor ❤️ minha resposta é: "+resp;
+
+window.location.href=
+"https://wa.me/"+numero+"?text="+encodeURIComponent(msg);
+
+}
+
+</script>
+
+</body>
+  </html>
